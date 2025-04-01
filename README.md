@@ -21,8 +21,8 @@ Test your reflexes with this simple yet engaging **Reflex Tester Game**! Click t
 
 ## 📷 Preview
 
-<img src="https://raw.githubusercontent.com/rajnandiniini/Reflex-Tester-Game/main/images/ss1.png" width="300" height="auto">
 <img src="https://raw.githubusercontent.com/rajnandiniini/Reflex-Tester-Game/main/images/ss2.png" width="300" height="auto">
+<img src="https://raw.githubusercontent.com/rajnandiniini/Reflex-Tester-Game/main/images/ss1.png" width="300" height="auto">
 
 
 ## ⚙️ Setup  
