@@ -6,102 +6,226 @@
   <title>Reflex Tester</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
     body {
       font-family: 'Poppins', sans-serif;
       text-align: center;
       background: linear-gradient(to right, #ff9a9e, #fad0c4);
       margin: 0;
       padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      overflow: hidden;
     }
-
+    
     h1 {
       color: #fff;
       font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 10px;
       text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
     }
-
+    
     p {
       color: #fff;
       font-size: 18px;
+      margin-bottom: 20px;
+      opacity: 0.9;
     }
-
     #gameArea {
       width: 400px;
       height: 400px;
-      margin: 20px auto;
+      margin: 0 auto 20px;
       position: relative;
-      background: #fff;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
       border-radius: 20px;
-      box-shadow: 0px 5px 15px rgba(21, 21, 21, 0.2);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
       overflow: hidden;
+      border: 10px solid rgba(255, 255, 255, 0.18);
     }
-
+    
     #target {
       width: 50px;
       height: 50px;
-      background: radial-gradient(circle, #ff0077, #ff008c);
+      background: linear-gradient(45deg, #FF3366, #FF6B6B);
       border-radius: 50%;
       position: absolute;
       cursor: pointer;
-      transition: transform 0.2s ease-in-out, left 0.2s, top 0.2s;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-
+    
     #target:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+    
+    #target:active {
+      transform: scale(0.95);
+    }
+    
+    .stats-container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 15px 25px;
+      display: flex;
+      gap: 30px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+    
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .stat-label {
+      font-size: 14px;
+      opacity: 0.8;
+      margin-bottom: 5px;
+    }
+    
+    .stat-value {
+      font-size: 22px;
+      font-weight: 600;
+    }
+    
+    .circle {
+      position: absolute;
+      bottom: -50px;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      animation: floatUp linear infinite;
+      z-index: -1;
     }
 
-    #score, #highScore {
-      font-size: 20px;
-      font-weight: bold;
-      color: #fff;
-      margin-top: 15px;
+    @keyframes floatUp {
+      from {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-100vh);
+        opacity: 0;
+      }
+    }
+
+    .background-anim {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+    
+    @media (max-width: 450px) {
+      #gameArea {
+        width: 300px;
+        height: 300px;
+      }
+      
+      .stats-container {
+        padding: 10px 15px;
+        gap: 15px;
+      }
+      
+      .stat-value {
+        font-size: 18px;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Reflex Tester Game</h1>
+  <div class="background-anim" id="backgroundAnim"></div>
+  
+  <h1>Reflex Tester</h1>
   <p>Click on the circle as fast as you can!</p>
+  
   <div id="gameArea">
     <div id="target"></div>
   </div>
-  <p id="score">Reaction Time: <span id="reactionTime">0</span> ms</p>
-  <p id="highScore">High Score: <span id="highScoreTime">0</span> ms</p>
-
+  
+  <div class="stats-container">
+    <div class="stat-item">
+      <div class="stat-label">Reaction Time</div>
+      <div class="stat-value"><span id="reactionTime">0</span> ms</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-label">Best Time</div>
+      <div class="stat-value"><span id="highScoreTime">0</span> ms</div>
+    </div>
+  </div>
+  
   <script>
     const gameArea = document.getElementById('gameArea');
     const target = document.getElementById('target');
     const reactionTimeDisplay = document.getElementById('reactionTime');
     const highScoreDisplay = document.getElementById('highScoreTime');
-
     let startTime;
     let highScore = Infinity; 
-
+    
     function getRandomPosition() {
       const x = Math.random() * (gameArea.clientWidth - target.offsetWidth);
       const y = Math.random() * (gameArea.clientHeight - target.offsetHeight);
       return { x, y };
     }
-
+    
     function moveTarget() {
       const { x, y } = getRandomPosition();
       target.style.left = `${x}px`;
       target.style.top = `${y}px`;
       startTime = new Date().getTime();
     }
-
+    
     target.addEventListener('click', () => {
       const endTime = new Date().getTime();
       const reactionTime = endTime - startTime;
       reactionTimeDisplay.textContent = reactionTime;
-
+      
       if (reactionTime < highScore) {
         highScore = reactionTime;
-        highScoreDisplay.textContent = highScore;  
+        highScoreDisplay.textContent = highScore;
+        
+        // Visual feedback for new high score
+        highScoreDisplay.style.color = "#FFDD00";
+        setTimeout(() => {
+          highScoreDisplay.style.color = "";
+        }, 1000);
       }
-
+      
       moveTarget();
     });
-
+    
+    // Create floating circles background animation
+    function createFloatingCircles() {
+      const animContainer = document.getElementById('backgroundAnim');
+      
+      for (let i = 0; i < 50; i++) {
+        let circle = document.createElement('div');
+        circle.classList.add('circle');
+        circle.style.left = `${Math.random() * 100}vw`;
+        circle.style.animationDuration = `${Math.random() * 5 + 5}s`;
+        animContainer.appendChild(circle);
+      }
+    }
+    
+    // Initialize
+    createFloatingCircles();
     moveTarget();
   </script>
 </body>
