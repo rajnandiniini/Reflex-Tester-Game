@@ -20,5 +20,5 @@ Test your reflexes with this simple yet engaging **Reflex Tester Game**! Click t
 - CSS Animations and Transitions
 
 ## 📷 Preview
-<img src="C:\Users\rajna\OneDrive\Pictures\Screenshots\Screenshot 2025-04-01 082917.png" width="300" height="auto">
-<img src="C:\Users\rajna\OneDrive\Pictures\Screenshots\Screenshot 2025-04-01 082953.png" width="300" height="auto">
+<img src="Screenshot 2025-04-01 082917.png" width="300" height="auto">
+<img src="Screenshot 2025-04-01 082953.png" width="300" height="auto">
