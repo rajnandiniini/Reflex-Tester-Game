@@ -45,47 +45,49 @@
       color: #fff;
       padding: 12px 24px;
       font-size: 18px;
-      border: none;
-      cursor: pointer;
-      transition: transform 0.5s, background 0.5s;
+      border:none;
+      cursor:grab;
+      transition: 0.5s;
     }
 
     button:hover {
-      transform: scale(1.2);
+      transform: scale(1.5);
       background: #ff0055;
     }
 
     .circle {
-      position: absolute;
-      bottom: -50px;
-      width: 20px;
-      height: 20px;
-      background-color: rgba(255, 255, 255, 0.6);
-      border-radius: 50%;
-      animation: floatUp linear infinite;
-    }
+  position: absolute;
+  bottom: -50px;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  animation: floatUp linear infinite;
+}
 
-    @keyframes floatUp {
-      from {
-        transform: translateY(0);
-        opacity: 1;
-      }
-      to {
-        transform: translateY(-100vh);
-        opacity: 0;
-      }
-    }
+@keyframes floatUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+}
 
     .background-anim {
       position: absolute;
       width: 100%;
-      height: 100%;
+      block-size: 100%;s
       overflow: hidden;
       z-index: -1;
     }
   </style>
 </head>
 <body>
+
+
   <div class="container" id="startPage">
     <h1>Reflex Tester Game</h1>
     <p>Test how fast your reflexes are!</p>
@@ -94,9 +96,8 @@
   </div>
 
   <script>
-
-function startGame() {
-   window.location.href = "/Reflex-Tester-Game/gamepage.html";
+    function startGame() {
+  window.location.href = "C:/Users/rajna/OneDrive/Desktop/project1/gamepage.html";
 }
 
 
