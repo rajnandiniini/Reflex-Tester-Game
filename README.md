@@ -25,3 +25,6 @@ Test your reflexes with this simple yet engaging **Reflex Tester Game**! Click t
 <img src="https://raw.githubusercontent.com/rajnandiniini/Reflex-Tester-Game/main/images/Screenshot 2025-04-01 082953.png" width="300" height="auto">
 
 
+## ⚙️ Setup  
+
+Try it here: **[Reflex-Tester-Game](https://rajnandiniini.github.io/Reflex-Tester-Game/)**  
