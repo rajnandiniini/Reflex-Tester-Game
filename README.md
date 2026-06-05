@@ -27,4 +27,4 @@ Test your reflexes with this simple yet engaging **Reflex Tester Game**! Click t
 
 ## Setup  
 
-Try it here: **[Reflex-Tester-Game](https://rajnandiniini.github.io/Reflex-Tester-Game/)**  
+Try it here: **[Reflex-Tester-Game](https://rajnyandini.github.io/Reflex-Tester-Game/)**  
