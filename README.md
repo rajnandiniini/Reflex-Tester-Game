@@ -1,5 +1,5 @@
 # Reflex Tester Game 
-
+hiii!! this is one of my inital projects that i made just like that :)
 Test your reflexes with this simple yet engaging **Reflex Tester Game**! Click the moving target as fast as possible and track your reaction time.
 
 ## Features
